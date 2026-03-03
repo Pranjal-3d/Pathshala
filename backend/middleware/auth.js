@@ -3,7 +3,6 @@ import { User } from '../models/User.models.js';
 
 const serviceAccount = require('../config/firebase-service-account.json');
 
-
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
 });
