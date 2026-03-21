@@ -63,10 +63,7 @@ export const getUser = async (req, res) => {
 
 export const verifyEmail = async (req, res) => {
   try {
-    const user = await User.findById(req.user._id);
-    user.isVerified = true;
-    await user.save();
-    res.json({ message: 'Email verified successfully' });
+    // Email verification logic here
   } catch (error) {
     console.error('Verify Email Error:', error);
     res.status(500).json({ message: 'Failed to verify email' });

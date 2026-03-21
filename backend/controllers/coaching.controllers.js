@@ -51,19 +51,19 @@ export const createPaymentSession = async (req, res) => {
           price_data: {
             currency: 'inr',
             product_data: {
-              name: 'Coaching Center Registration Fee'
+              name: 'Coaching Session',
             },
-            unit_amount: 50000 // ₹500
+            unit_amount: fees * 100,
           },
-          quantity: 1
-        }
+          quantity: 1,
+        },
       ],
       mode: 'payment',
-      success_url: `${process.env.FRONTEND_URL}/coaching/dashboard`,
-      cancel_url: `${process.env.FRONTEND_URL}/coaching/register`
+      success_url: `${process.env.FRONTEND_URL}/success`,
+      cancel_url: `${process.env.FRONTEND_URL}/cancel`,
     });
 
-    res.json({ sessionId: session.id });
+    res.json({ id: session.id });
   } catch (error) {
     console.error('Create Payment Session Error:', error);
     res.status(500).json({ message: 'Failed to create payment session' });
